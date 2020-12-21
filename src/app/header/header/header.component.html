@@ -1,0 +1,22 @@
+<div>
+    <div class="menu-bg"></div>
+    <div class="menu-burger" (click)="showNav()">☰</div>
+    <div class="search">
+        <movie-search></movie-search>
+        <mat-form-field appearance="fill">
+            <mat-label>Favorite food</mat-label>
+            <mat-select [(value)]="selectedCountry"
+                        (selectionChange)="countrySelected(selectedCountry)"
+                        name="country" ngDefaultControl>
+                <mat-option *ngFor="let country of countries" [value]="country.iso_3166_1">
+                    {{country.english_name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="menu-items">
+        <div (click)="redirectTo('upcoming')">Upcoming</div>
+        <div (click)="redirectTo('popular')">Popular</div>
+        <div (click)="redirectTo('trending')">Trending</div>
+    </div>
+</div>

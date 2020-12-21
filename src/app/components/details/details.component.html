@@ -1,0 +1,61 @@
+<div class="details-container">
+    <div class="contain">
+        <div class="row">
+            <div class="row__inner">
+
+                <div class="tile" *ngFor="let cast of casts" [ngClass]="{'hide-tile': !cast.profile_path}">
+                    <div class="tile__media">
+                        <img class="tile__img" src="https://image.tmdb.org/t/p/w220_and_h330_face/{{cast.profile_path}}" alt="" />
+                    </div>
+                    <div class="tile__details">
+                        <div class="tile__title">
+                            {{cast.name}} as {{cast.character}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="media-container">
+        <figure class="snip0019">
+            <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{details.backdrop_path || details.poster_path}}"
+                alt="sample11" />
+            <figcaption>
+                <div>
+                    <h2>{{details.title}}</h2>
+                </div>
+                <div>
+                    <p>{{details.tagline}}</p>
+                </div>
+            </figcaption>
+        </figure>
+    
+        <div>
+            <span *ngFor="let vid of details.videos.results">
+                <iframe width="560" height="315"
+                    [src]="getSanitizedUrl(vid.key)"
+                    frameBorder="0" allowFullScreen>
+                </iframe>
+            </span>
+        </div>
+    </div>
+
+    <div>
+        <div class="cards">
+            <div class="card" *ngFor="let crewMember of crew | keyvalue">
+                <div class="heading">
+                    <img class="image-icons" src="./../../../assets/Crew.svg" alt="Kiwi standing on oval">
+                    <div class="heading-text">{{crewMember.key}}</div>
+                </div>
+                <hr>
+                <div class="crew-name">
+                    <span *ngFor="let entity of crewMember.value">{{entity.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-similar></app-similar>
+</div>
