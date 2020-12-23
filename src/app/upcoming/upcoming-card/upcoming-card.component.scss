@@ -233,13 +233,13 @@ ul {
   }
 }
 
-@media (max-width: 768px) {
-  ul {
-    .booking-card{
-      @include cardsOpen();
-    }
-  }
-}
+// @media (max-width: 768px) {
+//   ul {
+//     .booking-card{
+//       @include cardsOpen();
+//     }
+//   }
+// }
 
 .credits {
   display: table;
