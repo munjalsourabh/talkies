@@ -1,9 +1,14 @@
 <div class="similar">
-    <div class="container">
+    <div class="container" *ngIf="!isMobile()">
         <div class="card" *ngFor="let movie of similarMovies"
         [ngStyle]="{background: 'url(https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path + ')'}"
         (click)="routeToDetail(movie)">
         <!-- <h3 class="title">{{movie.original_title}}</h3> -->
+        </div>
     </div>
-</div>
+    <div class="my-slider" *ngIf="isMobile()">
+        <div *ngFor="let movie of similarMovies"
+            [ngStyle]="{background: 'url(https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path + ')'}">
+        </div>
+    </div>
 </div>

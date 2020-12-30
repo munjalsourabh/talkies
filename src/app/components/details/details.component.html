@@ -34,7 +34,7 @@
     
         <div>
             <span *ngFor="let vid of details.videos.results">
-                <iframe width="560" height="315"
+                <iframe width="360" height="215"
                     [src]="getSanitizedUrl(vid.key)"
                     frameBorder="0" allowFullScreen>
                 </iframe>
@@ -46,7 +46,7 @@
         <div class="cards">
             <div class="card" *ngFor="let crewMember of crew | keyvalue">
                 <div class="heading">
-                    <img class="image-icons" src="./../../../assets/Crew.svg" alt="Kiwi standing on oval">
+                    <img class="image-icons" src="./../../../assets/{{crewMember.key}}.svg" alt="Kiwi standing on oval">
                     <div class="heading-text">{{crewMember.key}}</div>
                 </div>
                 <hr>

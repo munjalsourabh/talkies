@@ -125,6 +125,17 @@ a:hover {
   -webkit-transform: translate3d(125px, 0, 0);
           transform: translate3d(125px, 0, 0);
 }
+.tile:first-of-type:hover ~ .tile {
+  -webkit-transform: translate3d(250px, 0, 0) !important;
+          transform: translate3d(250px, 0, 0) !important;
+}
+
+.tile:first-of-type:hover {
+  -webkit-transform: translate3d(125px, 0, 0) scale(1.5) !important;
+          transform: translate3d(125px, 0, 0) scale(1.5) !important;
+  // opacity: 1;
+}
+
 .hide-tile {
   display: none;
 }
@@ -281,8 +292,9 @@ figure.snip0019:hover figcaption::before {
 
     .heading-text {
       position: relative;
-      top: 20px;
+      top: 8px;
       font-size: 12px;
+      left: 10px;
     }
   }
 
@@ -297,4 +309,5 @@ figure.snip0019:hover figcaption::before {
 .media-container {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
