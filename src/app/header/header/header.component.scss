@@ -68,11 +68,9 @@
   }
 }
 
-
 .search {
   font-size: 16px;
   font-weight: bold;
-  margin-top:100px;
   opacity:0;
   pointer-events:none;
   position: fixed;;
@@ -81,6 +79,8 @@
   transition: .4s;
   width: 100%;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 
   &.fs {
     transform: translateY(0);
@@ -106,4 +106,13 @@
   ::ng-deep .mat-form-field-ripple {
     background-color: white;
   }
+
+  ::ng-deep .mat-form-field-underline::before {
+    background-color: white
+  }
+
+  ::ng-deep .mat-form-field-type-mat-select .mat-form-field-wrapper {
+    padding-bottom: 0.5em
+  }
 }
+
