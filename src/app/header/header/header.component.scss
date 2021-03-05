@@ -77,9 +77,9 @@
   text-align: center;
   transform: translateY(-200%);
   transition: .4s;
-  width: 100%;
+  width: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
 
   &.fs {
