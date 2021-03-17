@@ -37,7 +37,9 @@ import { similarReducer } from './talkies/store/similar/similar.reducer';
 
 const routes: Routes = [
   {path: '', redirectTo: 'upcoming', pathMatch: 'full'},
-  { path: 'upcoming', canActivate: [GenreGaurd], component: UpcomingComponent},
+  { path: 'upcoming', canActivate: [GenreGaurd], component: UpcomingComponent },
+  { path: 'popular', canActivate: [GenreGaurd], component: UpcomingComponent },
+  { path: 'trending', canActivate: [GenreGaurd], component: UpcomingComponent},
   { path: 'details/:movieId', component: DetailsComponent },
 ]
 

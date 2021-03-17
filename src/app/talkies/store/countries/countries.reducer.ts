@@ -12,13 +12,18 @@ const initialState = {
     selectedCountry: 'US'
 };
 
-export function countryrReducer(state = initialState, action: CountryAction.CountryChanged) {
+export function countryrReducer(state = initialState, action: CountryAction.CountryAction) {
     switch (action.type) {
         case CountryAction.COUNTRY_CHANGED:
             return {
                 ...state,
                 selectedCountry: action.payload
             };
+        case CountryAction.TYPE_CHANGED:
+            return {
+                ...state,
+                type: action.payload
+            }
         default:
             return {
                 ...state,

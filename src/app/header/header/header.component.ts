@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import {ShowHeader} from '../../talkies/store/header/header.actions'
 import countries from './../../configs/countries';
-import { CountryChanged } from 'src/app/talkies/store/countries/countries.actions';
+import { CountryChanged, TypeChanged } from 'src/app/talkies/store/countries/countries.actions';
+import { FetchUpcoming } from 'src/app/talkies/store/talkies.actions';
 
 @Component({
   selector: 'app-header',
@@ -29,17 +30,15 @@ export class HeaderComponent implements OnInit {
     this.store.select('headerState').subscribe(({headerState}) => {
       this.headerState = headerState;
       if (headerState) {
-        document.getElementsByClassName('menu-bg')[0].classList.add('fs')
-        document.getElementsByClassName('menu-items')[0].classList.add('fs')
-        document.getElementsByClassName('menu-burger')[0].classList.add('fs')
-
-        document.getElementsByClassName('search')[0].classList.add('fs')
+        document.getElementsByClassName('menu-bg')[0].classList.add('fs');
+        document.getElementsByClassName('menu-items')[0].classList.add('fs');
+        document.getElementsByClassName('menu-burger')[0].classList.add('fs');
+        document.getElementsByClassName('search')[0].classList.add('fs');
       } else {
-        document.getElementsByClassName('menu-bg')[0].classList.remove('fs')
-        document.getElementsByClassName('menu-items')[0].classList.remove('fs')
-        document.getElementsByClassName('menu-burger')[0].classList.remove('fs')
-
-        document.getElementsByClassName('search')[0].classList.remove('fs')
+        document.getElementsByClassName('menu-bg')[0].classList.remove('fs');
+        document.getElementsByClassName('menu-items')[0].classList.remove('fs');
+        document.getElementsByClassName('menu-burger')[0].classList.remove('fs');
+        document.getElementsByClassName('search')[0].classList.remove('fs');
       }
     });
     this.store.dispatch(new ShowHeader(!this.headerState));
@@ -48,10 +47,15 @@ export class HeaderComponent implements OnInit {
   redirectTo(path): void {
     this.router.navigate([path]);
     this.store.dispatch(new ShowHeader(false));
+    this.store.dispatch(new FetchUpcoming({ type: path, selectedCountry: 'US' }));
   }
-
+  
   countrySelected(ev): void {
     this.store.dispatch(new ShowHeader(false));
     this.store.dispatch(new CountryChanged(ev));
+  }
+
+  typeChanged(ev): void {
+    this.store.dispatch(new TypeChanged(ev));
   }
 }

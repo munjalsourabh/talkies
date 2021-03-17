@@ -11,7 +11,8 @@ export class UpcomingTalkie implements Action {
 }
 
 export interface UpcomingMovie {
-    selectedCountry: string
+    selectedCountry: string,
+    type?: string,
 }
 
 export class FetchUpcoming implements Action {

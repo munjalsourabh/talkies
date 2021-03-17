@@ -13,9 +13,16 @@ export class UpcomingEffects {
     upcoming = this.actions.pipe(
         ofType(UpcomingActions.FETCH_UPCOMING_TALKIE),
         switchMap((payload: any) => {
-            return this.http.get<{results: TalkieModel[]}>(
-                `https://api.themoviedb.org/3/movie/upcoming?region=${payload.payload.selectedCountry}&api_key=6d327dfc65804feb593492f59fdabaca`
-            ).pipe(
+            const type = payload.payload.type ? payload.payload.type : 'upcoming';
+            let url = ''
+            if (type == 'trending') {
+                url = `https://api.themoviedb.org/3/trending/movie/week?api_key=6d327dfc65804feb593492f59fdabaca`
+            } else {
+                url = `https://api.themoviedb.org/3/movie/${type}?region=${payload.payload.selectedCountry}&api_key=6d327dfc65804feb593492f59fdabaca`
+            }
+            
+            console.log(payload);
+            return this.http.get<{results: TalkieModel[]}>(url).pipe(
                 map((response) => {
                     return new UpcomingActions.UpcomingTalkie(response.results);
                 }),
